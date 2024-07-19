@@ -125,7 +125,7 @@ function Items() {
           <Tabled sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell>Dessert (100g serving)</TableCell>
+                <TableCell>Items (100g serving)</TableCell>
                 <TableCell align="right">Calories (g)</TableCell>
                 <TableCell align="center">Action</TableCell>
               </TableRow>
