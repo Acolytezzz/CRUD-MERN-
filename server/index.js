@@ -11,7 +11,19 @@ app.use(express.json());
 
 dotenv.config();
 
-mongoose.connect(process.env.MONGO_URL);
+mongoose
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    tls: true,
+    tlsAllowInvalidCertificates: true, // Only use for testing
+  })
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((err) => {
+    console.error("Error connecting to MongoDB", err);
+  });
 
 app.get("/getItems", async (req, res) => {
   try {
@@ -55,6 +67,6 @@ app.put("/updateItem/:id", async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT;
 
-app.listen(PORT, () => console.log("Server is running...."));
+app.listen(PORT, () => console.log(`Server is running on ${PORT}`));
