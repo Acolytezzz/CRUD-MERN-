@@ -10,13 +10,12 @@ app.use(cors());
 app.use(express.json());
 
 dotenv.config();
+console.log("MongoDB URL:", process.env.MONGO_URL);
 
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    tls: true,
-    tlsAllowInvalidCertificates: true, // Only use for testing
   })
   .then(() => {
     console.log("Connected to MongoDB");
@@ -67,6 +66,6 @@ app.put("/updateItem/:id", async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => console.log(`Server is running on ${PORT}`));
