@@ -55,4 +55,6 @@ app.put("/updateItem/:id", async (req, res) => {
   }
 });
 
-app.listen(3001, () => console.log("Server is running...."));
+const PORT = process.env.PORT
+
+app.listen(PORT, () => console.log("Server is running...."));
