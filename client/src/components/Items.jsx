@@ -26,7 +26,7 @@ function Items() {
 
   useEffect(() => {
     axios
-      .get("https://crud-app-backend-13bw.onrender.com/getItems")
+      .get("http://localhost:3001/getItems")
       .then((res) => setData(res.data));
   }, []);
 
@@ -53,7 +53,7 @@ function Items() {
       item: edit.item,
       calories: edit.calories,
     };
-    axios.post("https://crud-app-backend-13bw.onrender.com/createItem", newItem).then((res) => {
+    axios.post("http://localhost:3001/createItem", newItem).then((res) => {
       setData((prevdata) => [...prevdata, res.data]);
       handleCloseAdd();
     });
@@ -61,7 +61,7 @@ function Items() {
 
   const handleDelete = (id) => {
     axios
-      .delete(`https://crud-app-backend-13bw.onrender.com/deleteItem/${id}`)
+      .delete(`http://localhost:3001/deleteItem/${id}`)
       .then(() => setData(data.filter((item) => item._id !== id)));
   };
 
@@ -89,7 +89,7 @@ function Items() {
       calories: edit.calories,
     };
     await axios
-      .put(`https://crud-app-backend-13bw.onrender.com/updateItem/${edit._id}`, updatedItem)
+      .put(`http://localhost:3001/updateItem/${edit._id}`, updatedItem)
       .then((res) => {
         setData((prevdata) =>
           prevdata.map((item) =>
